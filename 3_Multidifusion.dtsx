@@ -1,0 +1,708 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/11/2025 1:23:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4UUJNCI"
+  DTS:CreatorName="DESKTOP-4UUJNCI\lavjo"
+  DTS:DTSID="{6BBF1D4F-3E0F-43FC-B465-5286D68C456F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{DD776970-228C-4FEA-BA39-55886A4EE7D8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2F06D3F6-75B0-48A3-9A78-AEFB9B24CD07}"
+      DTS:ObjectName="localhost\SQLEXPRESS.AdventureWorks2022">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=AdventureWorks2022;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{2F06D3F6-75B0-48A3-9A78-AEFB9B24CD07}localhost\SQLEXPRESS.AdventureWorks2022;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VentasMulticast_Principal.csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{13A0EBDE-586B-4957-8367-1470AA6FE1C0}"
+      DTS:ObjectName="VentasMulticast_Principal.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\lavjo\source\repos\SSIS_Transformaciones\Data\VentasMulticast_Principal.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesOrderID"
+              DTS:DTSID="{86618E28-D6C5-4791-89A9-30DFE2DD1246}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerID"
+              DTS:DTSID="{38693DD1-7775-4FEB-95D4-4FBC1EABD40F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="101"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NombreCliente"
+              DTS:DTSID="{10803BDD-00B2-4FE8-92E1-7492CC2ED2B3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalDue"
+              DTS:DTSID="{02D4C8D1-8F3F-41A8-A155-D3DAFD2138C8}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VentasMulticast_Respaldo.csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{BC4759E5-08C6-4545-BAA9-817136B1FF3B}"
+      DTS:ObjectName="VentasMulticast_Respaldo.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\lavjo\source\repos\SSIS_Transformaciones\Data\VentasMulticast_Respaldo.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesOrderID"
+              DTS:DTSID="{B03A9146-1CC4-4FF6-9496-2670730AA572}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerID"
+              DTS:DTSID="{9D2739E3-E278-41C1-9F03-8FF00179805C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="101"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NombreCliente"
+              DTS:DTSID="{2C2EF83D-44CE-4A5C-AA31-80AD51D8286A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalDue"
+              DTS:DTSID="{BD02122D-66B5-4D73-A7A5-86819061129C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AFE6B1A5-22A2-4A3D-8360-A4F27DA0575C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Multidifusión - Enviar el mismo flujo a dos destinos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="2058"
+              name="Archivo de Respaldo"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VentasMulticast_Respaldo.csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[VentasMulticast_Respaldo.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].Columns[SalesOrderID]"
+                      cachedDataType="i4"
+                      cachedName="SalesOrderID"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[SalesOrderID]" />
+                    <inputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].Columns[NombreCliente]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="NombreCliente"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].ExternalColumns[NombreCliente]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[NombreCliente]" />
+                    <inputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].Columns[TotalDue]"
+                      cachedDataType="cy"
+                      cachedName="TotalDue"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].ExternalColumns[TotalDue]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[TotalDue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].ExternalColumns[NombreCliente]"
+                      dataType="wstr"
+                      length="101"
+                      name="NombreCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="2058"
+              name="Archivo Principal"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VentasMulticast_Principal.csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[VentasMulticast_Principal.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].Columns[SalesOrderID]"
+                      cachedDataType="i4"
+                      cachedName="SalesOrderID"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[SalesOrderID]" />
+                    <inputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].Columns[NombreCliente]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="NombreCliente"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].ExternalColumns[NombreCliente]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[NombreCliente]" />
+                    <inputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].Columns[TotalDue]"
+                      cachedDataType="cy"
+                      cachedName="TotalDue"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].ExternalColumns[TotalDue]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[TotalDue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].ExternalColumns[NombreCliente]"
+                      dataType="wstr"
+                      length="101"
+                      name="NombreCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Duplicar Flujo de Datos">
+              <inputs>
+                <input
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Ventas con Nombres Mayúsculas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT TOP 100
+    soh.SalesOrderID,
+    soh.CustomerID,
+    UPPER(p.FirstName + ' ' + p.LastName) AS NombreCliente,
+    soh.TotalDue
+FROM Sales.SalesOrderHeader AS soh
+INNER JOIN Person.Person AS p
+    ON soh.CustomerID = p.BusinessEntityID;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      name="SalesOrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[NombreCliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].ExternalColumns[NombreCliente]"
+                      length="101"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[NombreCliente]"
+                      name="NombreCliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      name="TotalDue"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].ExternalColumns[NombreCliente]"
+                      dataType="wstr"
+                      length="101"
+                      name="NombreCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                      name="SalesOrderID" />
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[NombreCliente]"
+                      dataType="wstr"
+                      length="101"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[NombreCliente]"
+                      name="NombreCliente" />
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      dataType="cy"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      name="TotalDue" />
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos.Paths[Multicast Output 1]"
+              endId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal.Inputs[Flat File Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos.Paths[Multicast Output 2]"
+              endId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo.Inputs[Flat File Destination Input]"
+              name="Multicast Output 2"
+              startId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\Multidifusión - Enviar el mismo flujo a dos destinos.Paths[OLE DB Source Output]"
+              endId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos.Inputs[Multicast Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="325,42"
+          Id="Package\Multidifusión - Enviar el mismo flujo a dos destinos"
+          TopLeft="39,42" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Multidifusión - Enviar el mismo flujo a dos destinos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas"
+          TopLeft="64,53" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Duplicar Flujo de Datos"
+          TopLeft="259,131" />
+        <EdgeLayout
+          Id="Package\Multidifusión - Enviar el mismo flujo a dos destinos.Paths[OLE DB Source Output]"
+          TopLeft="185.5,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="170,36"
+              Start="0,0"
+              End="170,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="4,18" />
+                  <mssgle:LineSegment
+                    End="166,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="166,18"
+                    Point2="170,18"
+                    Point3="170,22" />
+                  <mssgle:LineSegment
+                    End="170,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo Principal"
+          TopLeft="516,75" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Archivo de Respaldo"
+          TopLeft="520,174" />
+        <EdgeLayout
+          Id="Package\Multidifusión - Enviar el mismo flujo a dos destinos.Paths[Multicast Output 1]"
+          TopLeft="452,146.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64,-50.3333333333333"
+              Start="0,0"
+              End="56.5,-50.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.0091743119266,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.0091743119266,0"
+                    Point2="27.0091743119266,0"
+                    Point3="27.0091743119266,-4" />
+                  <mssgle:LineSegment
+                    End="27.0091743119266,-46.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.0091743119266,-46.3333333333333"
+                    Point2="27.0091743119266,-50.3333333333333"
+                    Point3="31.0091743119266,-50.3333333333333" />
+                  <mssgle:LineSegment
+                    End="56.5,-50.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Multidifusión - Enviar el mismo flujo a dos destinos.Paths[Multicast Output 2]"
+          TopLeft="452,157.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68,37.3333333333333"
+              Start="0,0"
+              End="60.5,37.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.697247706422,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.697247706422,0"
+                    Point2="28.697247706422,0"
+                    Point3="28.697247706422,4" />
+                  <mssgle:LineSegment
+                    End="28.697247706422,33.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.697247706422,33.3333333333333"
+                    Point2="28.697247706422,37.3333333333333"
+                    Point3="32.697247706422,37.3333333333333" />
+                  <mssgle:LineSegment
+                    End="60.5,37.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Multidifusión - Enviar el mismo flujo a dos destinos\Ventas con Nombres Mayúsculas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

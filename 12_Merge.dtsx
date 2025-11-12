@@ -1,0 +1,1253 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/11/2025 10:27:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4UUJNCI"
+  DTS:CreatorName="DESKTOP-4UUJNCI\lavjo"
+  DTS:DTSID="{5675B384-60C3-4E5A-98EE-CC60ABC80B43}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{7674B533-1534-410E-91A8-2E08534C8AC3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0DB02E66-3520-49EE-9703-C29B6F917A31}"
+      DTS:ObjectName="localhost\SQLEXPRESS.AdventureWorks2022">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=AdventureWorks2022;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{0DB02E66-3520-49EE-9703-C29B6F917A31}localhost\SQLEXPRESS.AdventureWorks2022;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Productos_Combinados.csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6660A24E-01A9-43BC-90C3-D0DB4070E73F}"
+      DTS:ObjectName="Productos_Combinados.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\lavjo\source\repos\SSIS_Transformaciones\Data\Productos_Combinados.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductID"
+              DTS:DTSID="{0E32B9E0-EB7A-487C-9042-47886D696F17}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductName"
+              DTS:DTSID="{5EEBA1A2-3431-4961-A240-3133754265C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Color"
+              DTS:DTSID="{9D2F680D-BED6-4A0D-A6F3-5DA18CB389DD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ListPrice"
+              DTS:DTSID="{0D1752A1-5B85-4C6C-96CD-9276B08F93E1}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Mezclar - Combinar dos flujos ordenados"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{681CE061-E1A7-4821-A763-0126153462BE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Mezclar - Combinar dos flujos ordenados"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="2058"
+              name="Archivo Productos Combinados"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Productos_Combinados.csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[Productos_Combinados.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].ExternalColumns[Color]"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].ExternalColumns[ListPrice]"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ListPrice]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Ordenar Negros"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Inputs[Sort Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ProductID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Inputs[Sort Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ProductName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Inputs[Sort Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[Color]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Inputs[Sort Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ProductID]"
+                      name="ProductID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ProductName]"
+                      name="ProductName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ProductName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[Color]"
+                      name="Color">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[Color]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ListPrice]"
+                      name="ListPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ListPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Ordenar Rojos"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Inputs[Sort Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ProductID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Inputs[Sort Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ProductName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Inputs[Sort Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[Color]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Inputs[Sort Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ProductID]"
+                      name="ProductID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ProductName]"
+                      name="ProductName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ProductName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[Color]"
+                      name="Color">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[Color]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ListPrice]"
+                      name="ListPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ListPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Productos Negros"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+    ProductID,
+    Name AS ProductName,
+    Color,
+    ListPrice
+FROM Production.Product
+WHERE Color = 'Black';</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      length="50"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Productos Rojos"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+    ProductID,
+    Name AS ProductName,
+    Color,
+    ListPrice
+FROM Production.Product
+WHERE Color = 'Red';</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      length="50"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros"
+              componentClassID="Microsoft.Merge"
+              contactInfo="Merge;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple sorted data flows into one sorted data flow. Unlike the Merge Join, all rows flow to the output. For example, combine two sorted lists of customers into a single sorted list. If sorting is not important, use the Union All transformation. "
+              name="Unir Productos Rojos y Negros"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 1]"
+                  name="Merge Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 1].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ProductID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 1].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 1].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 1].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 2]"
+                  name="Merge Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 2].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ProductID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 2].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 2].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 2].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1]"
+                  isSorted="true"
+                  name="Merge Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductID]"
+                      name="ProductID"
+                      sortKeyPosition="1" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1].Columns[ListPrice]"
+                      name="ListPrice" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Mezclar - Combinar dos flujos ordenados.Paths[Merge Output 1]"
+              endId="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados.Inputs[Flat File Destination Input]"
+              name="Merge Output 1"
+              startId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Outputs[Merge Output 1]" />
+            <path
+              refId="Package\Mezclar - Combinar dos flujos ordenados.Paths[OLE DB Source Output]"
+              endId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Mezclar - Combinar dos flujos ordenados.Paths[OLE DB Source Output1]"
+              endId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Mezclar - Combinar dos flujos ordenados.Paths[Sort Output]"
+              endId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 1]"
+              name="Sort Output"
+              startId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos.Outputs[Sort Output]" />
+            <path
+              refId="Package\Mezclar - Combinar dos flujos ordenados.Paths[Sort Output1]"
+              endId="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros.Inputs[Merge Input 2]"
+              name="Sort Output"
+              startId="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="279,42"
+          Id="Package\Mezclar - Combinar dos flujos ordenados"
+          TopLeft="30,31" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Mezclar - Combinar dos flujos ordenados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos"
+          TopLeft="25,25" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros"
+          TopLeft="25,88" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Rojos"
+          TopLeft="240,31" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Mezclar - Combinar dos flujos ordenados\Ordenar Negros"
+          TopLeft="241,93" />
+        <EdgeLayout
+          Id="Package\Mezclar - Combinar dos flujos ordenados.Paths[OLE DB Source Output]"
+          TopLeft="192,111.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49,0"
+              Start="0,0"
+              End="41.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="41.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Mezclar - Combinar dos flujos ordenados.Paths[OLE DB Source Output1]"
+          TopLeft="185,49">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55,0"
+              Start="0,0"
+              End="47.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Mezclar - Combinar dos flujos ordenados\Unir Productos Rojos y Negros"
+          TopLeft="467,57" />
+        <EdgeLayout
+          Id="Package\Mezclar - Combinar dos flujos ordenados.Paths[Sort Output]"
+          TopLeft="390,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77,26"
+              Start="0,0"
+              End="69.5,26">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.5,0"
+                    Point2="38.5,0"
+                    Point3="38.5,4" />
+                  <mssgle:LineSegment
+                    End="38.5,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.5,22"
+                    Point2="38.5,26"
+                    Point3="42.5,26" />
+                  <mssgle:LineSegment
+                    End="69.5,26" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Mezclar - Combinar dos flujos ordenados.Paths[Sort Output1]"
+          TopLeft="399,114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68,-30.3333333333333"
+              Start="0,0"
+              End="60.5,-30.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="35.302752293578,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.302752293578,0"
+                    Point2="39.302752293578,0"
+                    Point3="39.302752293578,-4" />
+                  <mssgle:LineSegment
+                    End="39.302752293578,-26.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.302752293578,-26.3333333333333"
+                    Point2="39.302752293578,-30.3333333333333"
+                    Point3="43.302752293578,-30.3333333333333" />
+                  <mssgle:LineSegment
+                    End="60.5,-30.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Mezclar - Combinar dos flujos ordenados\Archivo Productos Combinados"
+          TopLeft="472,166" />
+        <EdgeLayout
+          Id="Package\Mezclar - Combinar dos flujos ordenados.Paths[Merge Output 1]"
+          TopLeft="585.25,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Mezclar - Combinar dos flujos ordenados\Productos Rojos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Mezclar - Combinar dos flujos ordenados\Productos Negros">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

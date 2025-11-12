@@ -1,0 +1,501 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/11/2025 9:00:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4UUJNCI"
+  DTS:CreatorName="DESKTOP-4UUJNCI\lavjo"
+  DTS:DTSID="{57128A6B-49EC-4331-BD2A-FA3D5BB514AA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{6EDA1BD4-62C2-48E1-9B7C-66EA4B3DA8E0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1C7700CF-6230-4D59-8648-1179015282FA}"
+      DTS:ObjectName="localhost\SQLEXPRESS.AdventureWorks2022">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=AdventureWorks2022;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{1C7700CF-6230-4D59-8648-1179015282FA}localhost\SQLEXPRESS.AdventureWorks2022;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TerminosExtraidos.csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6468A3E5-7BE2-4005-BB3D-17AB3E069242}"
+      DTS:ObjectName="TerminosExtraidos.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\lavjo\source\repos\SSIS_Transformaciones\Data\TerminosExtraidos.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="128"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Term"
+              DTS:DTSID="{1277D4D8-A959-4A66-9B40-C84A8834A8CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Score"
+              DTS:DTSID="{7C600762-9EC5-4680-ABEA-223BD9858A6D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extracción de términos - Descripciones de productos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0B9CFA50-F677-4BC1-98E2-B72AC0776299}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extracción de términos - Descripciones de productos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Descripciones de Productos"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Description
+FROM Production.ProductDescription;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      length="400"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="400"
+                      name="Description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      dataType="wstr"
+                      length="400"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extracción de términos - Descripciones de productos\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TerminosExtraidos.csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[TerminosExtraidos.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Inputs[Flat File Destination Input].Columns[Term]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="Term"
+                      externalMetadataColumnId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Term]"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Output].Columns[Term]" />
+                    <inputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Inputs[Flat File Destination Input].Columns[Score]"
+                      cachedDataType="r8"
+                      cachedName="Score"
+                      externalMetadataColumnId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Score]"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Output].Columns[Score]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Term]"
+                      dataType="wstr"
+                      length="128"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Score]"
+                      dataType="r8"
+                      name="Score" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Extracción de términos - Descripciones de productos\Term Extraction"
+              componentClassID="Microsoft.TermExtraction"
+              description="Extracts frequently used English-only terms from an input data flow. Terms and their corresponding score are written to output data columns. For example, search a group of documents to discover commonly-used terms. Note: an English dictionary is included with Integration Services."
+              name="Term Extraction"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to use exclusion terms."
+                  name="NeedReferenceData">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the reference table containing the exclusion terms."
+                  name="OutTermTable"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column containing the exclusion terms. The column must be in the table specified in the property OutTermTable."
+                  name="OutTermColumn"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of terms to extract. 0 specifies noun, 1 specifies noun phrase, and 2 specifies noun and noun phrase."
+                  name="WordOrPhrase"
+                  typeConverter="WordOrPhrase">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies what kind of score to be associated with a term. 0 means using the frequency of a term as the score; 1 means using the TFIDF of a term as the score."
+                  name="ScoreType"
+                  typeConverter="ScoreType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the frequency threshold above which a term is extracted."
+                  name="FrequencyThreshold">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of words in a term."
+                  name="MaxLengthOfTerm">20</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the Term Extraction process is case sensitive."
+                  name="IsCaseSensitive">false</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Inputs[Term Extraction Input]"
+                  description="Input to Term Extraction Transformation"
+                  name="Term Extraction Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Inputs[Term Extraction Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="Description"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Output].Columns[Description]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Output]"
+                  description="Output from Term Extraction Transformation"
+                  errorOrTruncationOperation="Term Extraction"
+                  errorRowDisposition="RedirectRow"
+                  name="Term Extraction Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Output].Columns[Term]"
+                      dataType="wstr"
+                      description="Output Column from Term Extraction Transform"
+                      length="128"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Output].Columns[Term]"
+                      name="Term" />
+                    <outputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Output].Columns[Score]"
+                      dataType="r8"
+                      description="Score"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Output].Columns[Score]"
+                      name="Score" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Error Output]"
+                  description="Error Output from Term Extraction Transform"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Term Extraction Error Output"
+                  synchronousInputId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Inputs[Term Extraction Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extracción de términos - Descripciones de productos.Paths[OLE DB Source Output]"
+              endId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Inputs[Term Extraction Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Extracción de términos - Descripciones de productos.Paths[Term Extraction Output]"
+              endId="Package\Extracción de términos - Descripciones de productos\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Term Extraction Output"
+              startId="Package\Extracción de términos - Descripciones de productos\Term Extraction.Outputs[Term Extraction Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="336,42"
+          Id="Package\Extracción de términos - Descripciones de productos"
+          TopLeft="20,20" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extracción de términos - Descripciones de productos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos"
+          TopLeft="49,41" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Extracción de términos - Descripciones de productos\Term Extraction"
+          TopLeft="300,110" />
+        <EdgeLayout
+          Id="Package\Extracción de términos - Descripciones de productos.Paths[OLE DB Source Output]"
+          TopLeft="157,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.666666666667,27"
+              Start="0,0"
+              End="196.666666666667,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.0365699873897" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.0365699873897"
+                    Point2="0,16.0365699873897"
+                    Point3="4,16.0365699873897" />
+                  <mssgle:LineSegment
+                    End="192.666666666667,16.0365699873897" />
+                  <mssgle:CubicBezierSegment
+                    Point1="192.666666666667,16.0365699873897"
+                    Point2="196.666666666667,16.0365699873897"
+                    Point3="196.666666666667,20.0365699873897" />
+                  <mssgle:LineSegment
+                    End="196.666666666667,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Extracción de términos - Descripciones de productos\Flat File Destination"
+          TopLeft="505,37" />
+        <EdgeLayout
+          Id="Package\Extracción de términos - Descripciones de productos.Paths[Term Extraction Output]"
+          TopLeft="403.333333333333,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="189.666666666667,-31"
+              Start="0,0"
+              End="189.666666666667,-23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-8.5876418663304" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-8.5876418663304"
+                    Point2="0,-12.5876418663304"
+                    Point3="4,-12.5876418663304" />
+                  <mssgle:LineSegment
+                    End="185.666666666667,-12.5876418663304" />
+                  <mssgle:CubicBezierSegment
+                    Point1="185.666666666667,-12.5876418663304"
+                    Point2="189.666666666667,-12.5876418663304"
+                    Point3="189.666666666667,-16.5876418663304" />
+                  <mssgle:LineSegment
+                    End="189.666666666667,-23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extracción de términos - Descripciones de productos\Descripciones de Productos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

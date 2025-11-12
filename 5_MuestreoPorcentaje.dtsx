@@ -1,0 +1,716 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/11/2025 2:59:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4UUJNCI"
+  DTS:CreatorName="DESKTOP-4UUJNCI\lavjo"
+  DTS:DTSID="{937A9221-276F-42E6-B7E7-B1016A20744B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{73DD81D7-2E73-4B01-8553-FBD9C371DA38}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{12947AB2-FFCD-4CFC-B936-BCBB0F74A3B5}"
+      DTS:ObjectName="localhost\SQLEXPRESS.AdventureWorks2022">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=AdventureWorks2022;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{12947AB2-FFCD-4CFC-B936-BCBB0F74A3B5}localhost\SQLEXPRESS.AdventureWorks2022;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Ventas_Muestra_20.csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{1F9FEDE2-CB82-49CC-B17A-5A7A9267A404}"
+      DTS:ObjectName="Ventas_Muestra_20.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\lavjo\source\repos\SSIS_Transformaciones\Data\Ventas_Muestra_20.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesOrderID"
+              DTS:DTSID="{E5E7E51B-9CA2-4DDA-B0A1-5A20362FEF5B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerID"
+              DTS:DTSID="{88AEB06A-E794-4838-A660-2F6BCD0A0326}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OrderDate"
+              DTS:DTSID="{080E22FA-ED3C-45D0-A986-156893A05B64}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalDue"
+              DTS:DTSID="{03A19880-D32C-40C7-989B-C2F02AB681DA}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Ventas_Muestra_80.csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6E77451E-FAAA-4BD4-A973-8FD64EE318D0}"
+      DTS:ObjectName="Ventas_Muestra_80.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\lavjo\source\repos\SSIS_Transformaciones\Data\Ventas_Muestra_80.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesOrderID"
+              DTS:DTSID="{7A8B42D5-3C52-433E-9F07-CF819CF88617}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerID"
+              DTS:DTSID="{8689B3A8-611D-475C-8D23-C9B7125A7D1A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OrderDate"
+              DTS:DTSID="{F9133EA2-597D-46A4-B0F8-73A097157B2A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalDue"
+              DTS:DTSID="{C20755BB-3FE2-4CB8-A117-E4E875CE89C3}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{68AF3AD6-A72A-4244-87C9-1364E5ADCFB8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Muestreo de Porcentaje - 20% de Ventas Totales"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="2058"
+              name="Archivo de Muestra 20%"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Ventas_Muestra_20.csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[Ventas_Muestra_20.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].Columns[SalesOrderID]"
+                      cachedDataType="i4"
+                      cachedName="SalesOrderID"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[SalesOrderID]" />
+                    <inputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].ExternalColumns[OrderDate]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].Columns[TotalDue]"
+                      cachedDataType="cy"
+                      cachedName="TotalDue"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].ExternalColumns[TotalDue]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[TotalDue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="2058"
+              name="Archivo de Muestra 80%"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Ventas_Muestra_80.csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[Ventas_Muestra_80.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].Columns[SalesOrderID]"
+                      cachedDataType="i4"
+                      cachedName="SalesOrderID"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[SalesOrderID]" />
+                    <inputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].ExternalColumns[OrderDate]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].Columns[TotalDue]"
+                      cachedDataType="cy"
+                      cachedName="TotalDue"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].ExternalColumns[TotalDue]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[TotalDue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%"
+              componentClassID="Microsoft.PctSampling"
+              contactInfo="Percentage Sampling;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Randomly samples a percentage of rows from an input data flow. For example, use it twice to help create a data mining model: create one sample for training the model and another sample for testing the model."
+              name="Muestreo del 20%">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage size of the sample."
+                  expressionType="Notify"
+                  name="SamplingValue">20</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the seed for the random number generator."
+                  name="SamplingSeed">0</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%.Inputs[Percentage Sampling Input 1]"
+                  name="Percentage Sampling Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%.Outputs[Sampling Selected Output]"
+                  exclusionGroup="1"
+                  name="Sampling Selected Output"
+                  synchronousInputId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%.Inputs[Percentage Sampling Input 1]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%.Outputs[Sampling Unselected Output]"
+                  exclusionGroup="1"
+                  name="Sampling Unselected Output"
+                  synchronousInputId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%.Inputs[Percentage Sampling Input 1]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Output for rows in the sample"
+                      name="Selected">false</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Ventas Completas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT TOP 1000
+    SalesOrderID,
+    CustomerID,
+    OrderDate,
+    TotalDue
+FROM Sales.SalesOrderHeader;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost\SQLEXPRESS.AdventureWorks2022]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      name="SalesOrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      name="TotalDue"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                      name="SalesOrderID" />
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      dataType="cy"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      name="TotalDue" />
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales.Paths[OLE DB Source Output]"
+              endId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%.Inputs[Percentage Sampling Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales.Paths[Sampling Selected Output]"
+              endId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%.Inputs[Flat File Destination Input]"
+              name="Sampling Selected Output"
+              startId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%.Outputs[Sampling Selected Output]" />
+            <path
+              refId="Package\Muestreo de Porcentaje - 20% de Ventas Totales.Paths[Sampling Unselected Output]"
+              endId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%.Inputs[Flat File Destination Input]"
+              name="Sampling Unselected Output"
+              startId="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%.Outputs[Sampling Unselected Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="318,42"
+          Id="Package\Muestreo de Porcentaje - 20% de Ventas Totales"
+          TopLeft="36,23" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Muestreo de Porcentaje - 20% de Ventas Totales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas"
+          TopLeft="82,83" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Muestreo del 20%"
+          TopLeft="243,191" />
+        <EdgeLayout
+          Id="Package\Muestreo de Porcentaje - 20% de Ventas Totales.Paths[OLE DB Source Output]"
+          TopLeft="166.5,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="160,66"
+              Start="0,0"
+              End="160,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29"
+                    Point2="0,33"
+                    Point3="4,33" />
+                  <mssgle:LineSegment
+                    End="156,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="156,33"
+                    Point2="160,33"
+                    Point3="160,37" />
+                  <mssgle:LineSegment
+                    End="160,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 20%"
+          TopLeft="417,81" />
+        <EdgeLayout
+          Id="Package\Muestreo de Porcentaje - 20% de Ventas Totales.Paths[Sampling Selected Output]"
+          TopLeft="353,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="163,-68"
+              Start="0,0"
+              End="163,-60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-23.5871886120996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-23.5871886120996"
+                    Point2="0,-27.5871886120996"
+                    Point3="4,-27.5871886120996" />
+                  <mssgle:LineSegment
+                    End="159,-27.5871886120996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="159,-27.5871886120996"
+                    Point2="163,-27.5871886120996"
+                    Point3="163,-31.5871886120996" />
+                  <mssgle:LineSegment
+                    End="163,-60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.55794921875,-22.5871886120996,115.8841015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Archivo de Muestra 80%"
+          TopLeft="433,279" />
+        <EdgeLayout
+          Id="Package\Muestreo de Porcentaje - 20% de Ventas Totales.Paths[Sampling Unselected Output]"
+          TopLeft="326.5,233">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="205.5,46"
+              Start="0,0"
+              End="205.5,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="201.5,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="201.5,23"
+                    Point2="205.5,23"
+                    Point3="205.5,27" />
+                  <mssgle:LineSegment
+                    End="205.5,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="39.29294921875,28,126.9141015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Muestreo de Porcentaje - 20% de Ventas Totales\Ventas Completas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
